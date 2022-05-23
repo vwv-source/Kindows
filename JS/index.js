@@ -24,6 +24,7 @@ $(document).on('click', '.maximize', function(){
         $(this).parent().parent().parent().css('border-radius' , '0')
         $(this).parent().parent().parent().attr("maximizedstate", true);
         $(this).parent().parent().parent().css("transition", ".1s");
+        $(this).parent().parent().parent().find(".close").css('border-radius' , '0px')
     }
 })
 
@@ -31,10 +32,38 @@ $(document).on('click', '.close', function(){
     $(this).parent().parent().parent().remove()
 })
 
+var startmenustate = false;
+var searchmenustate = false;
 
+$(".startmenubutt").on('click', function(){
+    if(startmenustate == false){
+        $(".startmenu").css("animation-name", "startmenu")
+        startmenustate = true;
+        if(searchmenustate){
+            searchmenustate = false;
+            $(".searchmenu").css("animation-name", "startmenuflipped")
+        }
+    }else{
+        startmenustate = false;
+        $(".startmenu").css("animation-name", "startmenuflipped")
+    }
+}) 
+
+$(".searchmenubutt").on('click', function(){
+    if(searchmenustate == false){
+        $(".searchmenu").css("animation-name", "startmenu")
+        searchmenustate = true;
+        if(startmenustate){
+            startmenustate = false;
+            $(".startmenu").css("animation-name", "startmenuflipped")
+        }
+    }else{
+        searchmenustate = false;
+        $(".searchmenu").css("animation-name", "startmenuflipped")
+    }
+}) 
 
 var windows = document.querySelectorAll(".window")
-var maximizedstate = false;
 var cIndex = 0;
 
 $(".header").on('mousedown', function(){
