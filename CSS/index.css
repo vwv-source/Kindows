@@ -1,0 +1,105 @@
+*{
+    font-family: "Segoe UI";
+    color: white;
+}
+
+body{
+    background-image: url(" ../Assets/wall1.jpg");
+    background-size: cover;
+    overflow: hidden;
+}
+
+.taskbar{
+    background-color: #202020bd;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    left:0;
+    right: 0;
+    bottom: 0;
+    z-index: 99999;
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+}
+
+.icons{
+    display:flex; 
+    justify-content:center;
+    align-items:center;
+}
+
+.icons img{
+    width: 30px;
+    height: 30px;
+    margin-top: 12px;
+    margin-right: 15px;
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    transition: .1s;
+}
+
+.icons img:hover{
+    background-color: rgba(128, 128, 128, 0.342);
+    border-radius: 7px;
+}
+
+.window{
+    width: 1000px;
+    height: 500px;
+    background-color: rgb(31, 31, 31);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.205);
+    box-shadow: 5px 5px 20px #00000073;
+}
+
+.desktop{
+    position: absolute;
+    right: 0;
+    bottom: 50px;
+    left: 0;
+    top: 0;
+}
+
+.header{
+    display:flex;
+    position: absolute;
+    width: 100%;
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
+    overflow: hidden;
+}
+
+.headerbuttons{
+    margin-left: auto;
+}
+
+.header input{
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+    background-color: transparent;
+    border: none;
+    transition: .1s;
+}
+
+.header input:hover{
+    background-color: rgba(255, 255, 255, 0.226);
+}
+
+.windowtitle{
+    font-size: 15px;
+    margin: 0;
+    margin-top: 7px;
+    margin-left: 10px;
+}
+
+.header .close:hover{
+    background-color: rgba(255, 0, 0, 0.829);
+}
