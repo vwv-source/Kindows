@@ -1,5 +1,3 @@
-import "https://ajax.googleapis.com/ajax/libs/jquery/3.5.0/jquery.min.js";
-
 $(document).ready(function() {
     $(document).on("contextmenu", function(e) {
         return false;
@@ -63,51 +61,57 @@ $(".searchmenubutt").on('click', function(){
     }
 }) 
 
-var windows = document.querySelectorAll(".window")
-var cIndex = 0;
 
-$(".header").on('mousedown', function(){
-    $(this).parent().css("transition", "none");
-})
+var _elementToFind = ".window";
+var _elementFound = false;
+var _counter = 1;
+$(document).bind("DOMSubtreeModified", function(evt) {
+    if ($(_elementToFind).length > 0) {
+        var windows = document.querySelectorAll(".window")
+        var cIndex = 0;
 
-windows.forEach(function(window){
-    dragElement(window);
-    function dragElement(elmnt) {
-        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-        window.querySelector(".header").onmousedown = dragMouseDown;
-      
-        function dragMouseDown(e) {
-            if($(this).parent().attr("maximizedstate") == "true"){
-                return;
+        $(".header").on('mousedown', function () {
+            $(this).parent().css("transition", "none");
+        })
+
+        windows.forEach(function (window) {
+            dragElement(window);
+            function dragElement(elmnt) {
+                var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+                window.querySelector(".header").onmousedown = dragMouseDown;
+
+                function dragMouseDown(e) {
+                    if ($(this).parent().attr("maximizedstate") == "true") {
+                        return;
+                    }
+                    e = e || window.event;
+                    e.preventDefault();
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    document.onmouseup = closeDragElement;
+                    document.onmousemove = elementDrag;
+                }
+
+                function elementDrag(e) {
+                    if ($(this).parent().attr("maximizedstate") == "true") {
+                        return;
+                    }
+                    e = e || window.event;
+                    e.preventDefault();
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                }
+
+                function closeDragElement() {
+                    document.onmouseup = null;
+                    document.onmousemove = null;
+                    document.ondragend = null;
+                }
             }
-            e = e || window.event;
-            e.preventDefault();
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            document.onmouseup = closeDragElement;
-            document.onmousemove = elementDrag;
-        }
-      
-        function elementDrag(e) {
-            if($(this).parent().attr("maximizedstate") == "true"){
-                return;
-            }
-            e = e || window.event;
-            e.preventDefault();
-            pos1 = pos3 - e.clientX;
-            pos2 = pos4 - e.clientY;
-            pos3 = e.clientX;
-            pos4 = e.clientY;
-            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-        }
-      
-        function closeDragElement() {
-            document.onmouseup = null;
-            document.onmousemove = null;
-            document.ondragend = null;
-        }
-      }
+        })
+    }
 })
-
-

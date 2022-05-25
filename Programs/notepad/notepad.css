@@ -1,0 +1,42 @@
+#notepad .container p{
+    height: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 0px;
+    margin-top: 0;
+    white-space: pre;
+    display: inline-block;
+}
+
+#notepad .container p:focus{
+    outline: none;
+    border: none;
+}
+
+#notepad .container{
+    margin-top: 45px;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}
+
+#notepad .header{
+    height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.205);
+    position: sticky;
+    z-index: 9;
+    top: 0;
+    background-color: rgb(31, 31, 31);
+}
+
+#notepad .altbuttons{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+#notepad .altbuttons input{
+    background-color: transparent;
+    border: none;
+}
