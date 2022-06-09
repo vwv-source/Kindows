@@ -7,7 +7,7 @@ function notepad(){
  
     link.rel = 'stylesheet';
     link.type = 'text/css';
-    link.href = '../Programs/notepad/notepad.css';
+    link.href = 'Programs/notepad/notepad.css';
 
     head.appendChild(link);
 
