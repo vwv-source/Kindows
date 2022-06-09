@@ -11,8 +11,8 @@ function notepad(){
 
     head.appendChild(link);
 
-    $(document.body).append(`<div class="window" id="notepad" processid="${id}"> <div class="header"><img src="../Assets/icons8-notepad-96.png" class="icon"> <p class="windowtitle">Untitled - Notepad</p> <div class="headerbuttons"> <input type="button" value="−" class="minimize"> <input type="button" value="▢" class="maximize"> <input type="button" value="X" class="close"> </div><br> <div class="altbuttons"> <input type="button" value="File"> <input type="button" value="Edit"> <input type="button" value="Format"> <input type="button" value="View"> <input type="button" value="Help"> </div> </div> <div class="container"> <p contenteditable="true" spellcheck="false">${$(this).attr('notepadtext')}</p> </div> </div>`)
-    $(".taskbar").find('.icons').append(`<img src="../Assets/icons8-notepad-96.png" alt="icon" id="${id}icon">`)
+    $(document.body).append(`<div class="window" id="notepad" processid="${id}"> <div class="header"><img src="Assets/icons8-notepad-96.png" class="icon"> <p class="windowtitle">Untitled - Notepad</p> <div class="headerbuttons"> <input type="button" value="−" class="minimize"> <input type="button" value="▢" class="maximize"> <input type="button" value="X" class="close"> </div><br> <div class="altbuttons"> <input type="button" value="File"> <input type="button" value="Edit"> <input type="button" value="Format"> <input type="button" value="View"> <input type="button" value="Help"> </div> </div> <div class="container"> <p contenteditable="true" spellcheck="false">${$(this).attr('notepadtext')}</p> </div> </div>`)
+    $(".taskbar").find('.icons').append(`<img src="Assets/icons8-notepad-96.png" alt="icon" id="${id}icon">`)
     
     $(`[processid=${id}]`).on("remove", function () {
         $(element).attr('notepadtext', $(`[processid=${id}] .container p`).html())
